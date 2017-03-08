@@ -1,21 +1,21 @@
-#ifndef LIGHT_BARRIER_HPP_
-#define LIGHT_BARRIER_HPP_
+#ifndef LIGHT_CYCLE_ENGINE_HPP_
+#define LIGHT_CYCLE_ENGINE_HPP_
 
 #include <iostream>
-#include "Line.hpp"
+#include "Entity.hpp"
 
 using namespace std;
+class Entity;
 
-class LightBarrier {
+class LightCycleEngine {
 public:
 	
-	Vec2d a;
-	Vec2d b;
+	vector<Entity*> entities;
 	
-	LightBarrier(Vec2d a, Vec2d b);
-	virtual ~LightBarrier();
+	LightCycleEngine(vector<Entity*> entities);
+	virtual ~LightCycleEngine();
 	
-	bool intersects(Line other);
+	void runStep();
 };
 
 #endif

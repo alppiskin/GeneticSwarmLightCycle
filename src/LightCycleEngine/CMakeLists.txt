@@ -9,8 +9,6 @@ file(GLOB SOURCES
 	LightCycleEngine.hpp
 	Vec2d.cpp
 	Vec2d.hpp
-	Line.hpp
-	Line.cpp
 	LightBarrier.hpp
 	LightBarrier.cpp
 )
