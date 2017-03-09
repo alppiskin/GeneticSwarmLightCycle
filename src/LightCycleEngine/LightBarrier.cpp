@@ -63,12 +63,14 @@ bool doIntersect(Vec2d p1, Vec2d q1, Vec2d p2, Vec2d q2)
 	return false; // Doesn't fall in any of the above cases
 }
 
-LightBarrier::LightBarrier(Vec2d a, Vec2d b){
+LightBarrier::LightBarrier(Vec2d a, Vec2d b, int timeout, LightCycle* owner){
 	this->a = a;
 	this->b = b;
+	this->timeout = timeout;
+	this->owner = owner;
 }
 
-bool LightBarrier::intersects(LightBarrier other){
+bool LightBarrier::intersects(Vec2d oa, Vec2d ob){
 	
-	return  doIntersect(a, b, other.a, other.b);
+	return  doIntersect(a, b, oa, ob);
 }

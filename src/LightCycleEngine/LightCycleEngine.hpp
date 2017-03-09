@@ -3,14 +3,17 @@
 
 #include <iostream>
 #include "Entity.hpp"
+#include "LightBarrier.hpp"
 
 using namespace std;
 class Entity;
+class LightBarrier;
 
 class LightCycleEngine {
 public:
 	
 	vector<Entity*> entities;
+	vector<LightBarrier*> barriers;
 	
 	LightCycleEngine(vector<Entity*> entities);
 	virtual ~LightCycleEngine();

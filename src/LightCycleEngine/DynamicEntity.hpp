@@ -7,19 +7,17 @@
 #include "Entity.hpp"
 
 using namespace std;
+class Entity;
 
 class DynamicEntity : public Entity {
-private:
+public:
 	Vec2d vel;
 	Vec2d acc;
 	
-public:
-	DynamicEntity(Vec2d pos, Vec2d size);
+	DynamicEntity(Vec2d pos, Vec2d size, float angle);
 	virtual void run();
-	
-	
+	virtual unsigned getType();
+
 };
-
-
 
 #endif

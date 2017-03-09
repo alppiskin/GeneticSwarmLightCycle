@@ -11,6 +11,8 @@ file(GLOB SOURCES
 	Vec2d.hpp
 	LightBarrier.hpp
 	LightBarrier.cpp
+	LightCycle.hpp
+	LightCycle.cpp
 )
 
 include_directories(/usr/local/include)

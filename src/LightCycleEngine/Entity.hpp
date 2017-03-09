@@ -5,23 +5,23 @@
 #include <vector>
 
 #include "Vec2d.hpp"
-#include "LightCycleEngine.hpp"
-
 class LightCycleEngine;
 
 using namespace std;
 
 class Entity {
 private:
+
+public:
 	Vec2d pos;
 	Vec2d size;
+	float angle;
 	LightCycleEngine *engine;
-public:
-	Entity(Vec2d pos, Vec2d size);
+	
+	Entity(Vec2d pos, Vec2d size, double angle);
 	virtual void run();
 	void setEngine(LightCycleEngine *engine);
-protected:
-	unsigned type;
+	virtual unsigned getType();
 };
 
 #endif

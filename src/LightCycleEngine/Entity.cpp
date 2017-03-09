@@ -1,9 +1,10 @@
 #include "Entity.hpp"
 
-Entity::Entity(Vec2d pos, Vec2d size){
+Entity::Entity(Vec2d pos, Vec2d size, double angle){
 	this->pos = pos;
 	this->size = size;
-	type = 0;
+	this->angle = angle;
+	this->engine = NULL;
 }
 
 void Entity::run(){
@@ -12,4 +13,8 @@ void Entity::run(){
 
 void Entity::setEngine(LightCycleEngine *engine){
 	this->engine = engine;
+}
+
+unsigned Entity::getType(){
+	return 0;
 }
