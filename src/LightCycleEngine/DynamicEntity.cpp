@@ -6,7 +6,7 @@ DynamicEntity::DynamicEntity(Vec2d pos, Vec2d size, float angle) : Entity(pos, s
 }
 
 void DynamicEntity::run(){
-	
+
 }
 
 unsigned DynamicEntity::getType(){
