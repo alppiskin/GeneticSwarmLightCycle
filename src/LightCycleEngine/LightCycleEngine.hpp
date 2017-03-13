@@ -14,9 +14,9 @@ public:
 	
 	vector<Entity*> entities;
 	vector<LightBarrier*> barriers;
+	unsigned step_count = 0;
 	
 	LightCycleEngine(vector<Entity*> entities);
-	virtual ~LightCycleEngine();
 	
 	void runStep();
 };

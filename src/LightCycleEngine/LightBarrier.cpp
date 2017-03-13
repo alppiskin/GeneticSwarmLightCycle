@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 
-// Given three coLightBarrierar Vec2ds p, q, r, the function checks if
-// Vec2d q lies on LightBarrier segment 'pr'
+// Given three colinear points p, q, r, the function checks if
+// point q lies on line segment 'pr'
 bool onSegment(Vec2d p, Vec2d q, Vec2d r)
 {
 	if (q.x <= max(p.x, r.x) && q.x >= min(p.x, r.x) &&
@@ -17,22 +17,22 @@ bool onSegment(Vec2d p, Vec2d q, Vec2d r)
 
 // To find orientation of ordered triplet (p, q, r).
 // The function returns following values
-// 0 --> p, q and r are coLightBarrierar
+// 0 --> p, q and r are colinear
 // 1 --> Clockwise
 // 2 --> Counterclockwise
 int orientation(Vec2d p, Vec2d q, Vec2d r)
 {
-	// See http://www.geeksforgeeks.org/orientation-3-ordered-Vec2ds/
+	// See http://www.geeksforgeeks.org/orientation-3-ordered-points/
 	// for details of below formula.
 	int val = (q.y - p.y) * (r.x - q.x) -
 	(q.x - p.x) * (r.y - q.y);
  
-	if (val == 0) return 0;  // coLightBarrierar
+	if (val == 0) return 0;  // colinear
  
 	return (val > 0)? 1: 2; // clock or counterclock wise
 }
 
-// The main function that returns true if LightBarrier segment 'p1q1'
+// The main function that returns true if line segment 'p1q1'
 // and 'p2q2' intersect.
 bool doIntersect(Vec2d p1, Vec2d q1, Vec2d p2, Vec2d q2)
 {
@@ -48,16 +48,16 @@ bool doIntersect(Vec2d p1, Vec2d q1, Vec2d p2, Vec2d q2)
 		return true;
  
 	// Special Cases
-	// p1, q1 and p2 are coLightBarrierar and p2 lies on segment p1q1
+	// p1, q1 and p2 are colinear and p2 lies on segment p1q1
 	if (o1 == 0 && onSegment(p1, p2, q1)) return true;
  
-	// p1, q1 and p2 are coLightBarrierar and q2 lies on segment p1q1
+	// p1, q1 and p2 are colinear and q2 lies on segment p1q1
 	if (o2 == 0 && onSegment(p1, q2, q1)) return true;
  
-	// p2, q2 and p1 are coLightBarrierar and p1 lies on segment p2q2
+	// p2, q2 and p1 are colinear and p1 lies on segment p2q2
 	if (o3 == 0 && onSegment(p2, p1, q2)) return true;
  
-	// p2, q2 and q1 are coLightBarrierar and q1 lies on segment p2q2
+	// p2, q2 and q1 are colinear and q1 lies on segment p2q2
 	if (o4 == 0 && onSegment(p2, q1, q2)) return true;
  
 	return false; // Doesn't fall in any of the above cases
@@ -71,6 +71,9 @@ LightBarrier::LightBarrier(Vec2d a, Vec2d b, int timeout, LightCycle* owner){
 }
 
 bool LightBarrier::intersects(Vec2d oa, Vec2d ob){
-	
 	return  doIntersect(a, b, oa, ob);
+}
+
+LightBarrier::~LightBarrier(){
+	
 }

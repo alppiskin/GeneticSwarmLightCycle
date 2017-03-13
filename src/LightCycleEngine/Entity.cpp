@@ -7,6 +7,10 @@ Entity::Entity(Vec2d pos, Vec2d size, double angle){
 	this->engine = NULL;
 }
 
+Entity::~Entity(){
+	
+}
+
 void Entity::run(){
 	
 }
