@@ -9,7 +9,7 @@ using namespace std;
 
 class LightCycle : public DynamicEntity {
 private:
-    vector<long long int> hitRange(long long int bound_factor, long long int index);
+	vector<long long int> hitRange(long long int bound_factor, long long int index);
 
 public:
 

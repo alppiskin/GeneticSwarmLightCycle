@@ -19,6 +19,7 @@ public:
 	LightCycleEngine *engine;
 	
 	Entity(Vec2d pos, Vec2d size, double angle);
+	virtual ~Entity();
 	virtual void run();
 	void setEngine(LightCycleEngine *engine);
 	virtual unsigned getType();

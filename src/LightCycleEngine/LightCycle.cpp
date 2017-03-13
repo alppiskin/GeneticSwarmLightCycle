@@ -11,6 +11,10 @@ LightCycle::LightCycle(Vec2d pos, Vec2d size, float angle) : DynamicEntity(pos, 
 	engine = NULL;
 }
 
+LightCycle::~LightCycle(){
+	
+}
+
 void LightCycle::turnLeft(){
 	angle -= 1;
 }
@@ -19,22 +23,37 @@ void LightCycle::turnRight(){
 	angle += 1;
 }
 
+unsigned LightCycle::getType(){
+	return 2;
+}
+
+float get_radians(float input){
+	return input * M_PI / 180.0;
+}
+
 void LightCycle::run(){
-	if (dead) { return; }
-	vel = (Vec2d(cos(angle), sin(angle)));
-	Vec2d next_pos = Vec2d(vel.x + pos.x, vel.y + pos.y);
 	
-	for(size_t i = 0; i < engine->barriers.size(); i++){
-		if (engine->barriers[i]->intersects(pos, next_pos)) {
-			dead = true;
-			score -= 1;
-			engine->barriers[i]->owner->score++;
-		}
-	}
+	int timeout = 500;
 	
 	if (!dead) {
-		pos += next_pos;
+		vel = Vec2d(cos(get_radians(angle)), sin(get_radians(angle)));
+		Vec2d next_pos = Vec2d(vel.x*3 + pos.x, vel.y*3 + pos.y);
+		
+		for(size_t i = 0; i < engine->barriers.size(); i++){
+			if(engine->barriers[i]->timeout < timeout-1) if (engine->barriers[i]->intersects(pos, next_pos)) {
+				engine->barriers[i];
+				dead = true;
+				score -= 1;
+				engine->barriers[i]->owner->score++;
+			}
+		}
+		
+		LightBarrier* lb = new LightBarrier(next_pos, pos, timeout, this);
+		pos = next_pos;
+		engine->barriers.push_back(lb);
 	}
+	
+	
 
 }
 
